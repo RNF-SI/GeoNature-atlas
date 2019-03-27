@@ -12,6 +12,7 @@ CHANGELOG
 * Amélioration du module de recherche de commune (AJAX)
 * Vérification des paramètres de configuration grâce à Marshmallow et passage de paramètres par défaut si paramètres absents
 * Simplification du passage de la configuration aux routes
+* Chargement 'lazy' des images sur les listes et la page d'accueil afin d'accélerer le chargement initial et soulager le serveur de redimmentionnement
 
 **Corrections**
 
