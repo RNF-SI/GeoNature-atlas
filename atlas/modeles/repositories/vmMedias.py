@@ -142,6 +142,7 @@ def getPhotosGallery(connection, id1, id2):
         JOIN atlas.vm_taxons t ON t.cd_ref = m.cd_ref
         WHERE m.id_type IN (:thisID1, :thisID2)
         ORDER BY RANDOM()
+        LIMIT 500
     """
     req = connection.execute(text(sql), thisID1=id1, thisID2=id2)
     tab_photos = []
@@ -165,7 +166,8 @@ def getPhotosGalleryByGroup(connection, id1, id2, INPNgroup):
         FROM atlas.vm_medias m
         JOIN atlas.vm_taxons t ON t.cd_ref = m.cd_ref
         WHERE m.id_type IN  (:thisID1, :thisID2) AND t.group2_inpn = :thisGroup
-        ORDER BY RANDOM()"""
+        ORDER BY RANDOM()
+        LIMIT 500"""
     req = connection.execute(text(sql), thisID1=id1, thisID2=id2, thisGroup=INPNgroup)
     tab_photos = []
     for r in req:
@@ -176,6 +178,6 @@ def getPhotosGalleryByGroup(connection, id1, id2, INPNgroup):
         else:
             taxon_name = r.lb_nom
         photo["name"] = taxon_name
-        tabPhotos.append(photo)
+        tab_photos.append(photo)
     return tab_photos
 
