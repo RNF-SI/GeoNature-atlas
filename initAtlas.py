@@ -8,9 +8,9 @@ from werkzeug.serving import run_simple
 from sqlalchemy import create_engine, MetaData, Table
 from flask_compress import Compress
 
-from atlas.configuration.config_parser import read_and_validate_conf
-from atlas.configuration.config_schema import AtlasConfig, SecretSchemaConf
-from atlas.configuration import config
+from .atlas.configuration.config_parser import read_and_validate_conf
+from .atlas.configuration.config_schema import AtlasConfig, SecretSchemaConf
+from .atlas.configuration import config
 
 db = SQLAlchemy()
 compress = Compress()
@@ -57,11 +57,11 @@ def create_app():
 
     app.debug = valid_config["modeDebug"]
     with app.app_context() as context:
-        from atlas.atlasRoutes import main as main_blueprint
+        from .atlas.atlasRoutes import main as main_blueprint
 
         app.register_blueprint(main_blueprint)
 
-        from atlas.atlasAPI import api
+        from .atlas.atlasAPI import api
 
         app.register_blueprint(api, url_prefix="/api")
 
