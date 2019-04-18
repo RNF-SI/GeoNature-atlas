@@ -128,7 +128,9 @@ def ficheEspece(cd_ref):
 
     cd_ref = int(cd_ref)
     taxon = vmTaxrefRepository.searchEspece(connection, cd_ref)
-    altitudes = vmAltitudesRepository.getAltitudesChilds(connection, cd_ref)
+    altitudes = None
+    if current_app.config["AFFICHAGE_ALTITUDE"]:
+        altitudes = vmAltitudesRepository.getAltitudesChilds(connection, cd_ref)
     months = vmMoisRepository.getMonthlyObservationsChilds(connection, cd_ref)
     synonyme = vmTaxrefRepository.getSynonymy(connection, cd_ref)
     communes = vmCommunesRepository.getCommunesObservationsChilds(connection, cd_ref)

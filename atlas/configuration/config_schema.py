@@ -124,6 +124,8 @@ class AtlasConfig(Schema):
 
     MAP = fields.Nested(MapConfig, missing=dict())
 
+    AFFICHAGE_ALTITUDE = fields.Boolean(missing=True)
+
     @validates_schema
     def validate_url_taxhub(self, data):
         """

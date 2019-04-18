@@ -1,23 +1,23 @@
 
 // alti graph
-Morris.Bar({
-            element:"altiChart",
-            data : dataset,
-            xkey: "altitude",
-            ykeys : ["value"],
-            labels: ['Observation(s)'],
-            xLabelAngle: 45,
-            hideHover: 'auto',
-            resize: true,
-            axes: true,
-            gridIntegers: true
-            /*yLabelFormat: function(y){return y != Math.round(y)?'':y;}*/
-/*            horizontal: true
-*/        });
+if (configuration.AFFICHAGE_ALTITUDE) {
+    Morris.Bar({
+                element:"altiChart",
+                data : dataset,
+                xkey: "altitude",
+                ykeys : ["value"],
+                labels: ['Observation(s)'],
+                xLabelAngle: 45,
+                hideHover: 'auto',
+                resize: true,
+                axes: true,
+                gridIntegers: true
+                /*yLabelFormat: function(y){return y != Math.round(y)?'':y;}*/
+    /*            horizontal: true
+    */        });
 
 
-
-svgbis=d3.selectAll("svg");
+    svgbis=d3.selectAll("svg");
 
         svgbis.append("g")
         .append("text")
@@ -28,6 +28,7 @@ svgbis=d3.selectAll("svg");
             .attr("font-size", "10px")
             .style("text-anchor", "end")
             .text("Altitude(m)");
+}
 
 
 var phenologyChart =  Morris.Bar({

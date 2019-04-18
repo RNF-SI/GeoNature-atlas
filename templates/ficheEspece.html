@@ -543,8 +543,10 @@
             {% endif %}
 
             <div class="panel panel-default" id="graphBloc">
+                {% if configuration.AFFICHAGE_ALTITUDE %}
                 <h3 class="text-center">Observations par classes d'altitudes</h3>
                 <div id="altiChart"></div>
+                {% endif %}
                 <h3 class="text-center">Observations mensuelles</h3>
                 <div id="phenologyChart"></div>
             </div>

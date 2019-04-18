@@ -106,10 +106,12 @@ function generateMap() {
 function onEachFeaturePoint(feature, layer) {
   popupContent =
     "<b>Date: </b>" +
-    feature.properties.dateobsPopup +
-    "</br><b>Altitude: </b>" +
-    feature.properties.altitude_retenue +
-    "</br><b>Observateurs: </b>" +
+    feature.properties.dateobsPopup;
+  if (configuration.AFFICHAGE_ALTITUDE) {
+    popupContent += "</br><b>Altitude: </b>" +
+    feature.properties.altitude_retenue;
+  }
+  popupContent += "</br><b>Observateurs: </b>" +
     feature.properties.observateurs;
 
   // verifie si le champs effectif est rempli
@@ -357,9 +359,11 @@ function onEachFeaturePointLastObs(feature, layer) {
     "<b>Espèce: </b>" +
     feature.properties.taxon +
     "</br><b>Date: </b>" +
-    feature.properties.dateobs +
-    "</br><b>Altitude: </b>" +
-    feature.properties.altitude_retenue;
+    feature.properties.dateobs;
+    if (configuration.AFFICHAGE_ALTITUDE) {
+      popupContent += "</br><b>Altitude: </b>" +
+      feature.properties.altitude_retenue;
+    }
 
   layer.bindPopup(
     popupContent +
@@ -376,10 +380,12 @@ function onEachFeaturePointCommune(feature, layer) {
     "<b>Espèce: </b>" +
     feature.properties.taxon +
     "</br><b>Date: </b>" +
-    feature.properties.dateobs +
-    "</br><b>Altitude: </b>" +
-    feature.properties.altitude_retenue +
-    "</br><b> Observateurs(s): </b>" +
+    feature.properties.dateobs;
+    if (configuration.AFFICHAGE_ALTITUDE) {
+      popupContent += "</br><b>Altitude: </b>" +
+      feature.properties.altitude_retenue;
+    }
+    popupContent += "</br><b> Observateurs(s): </b>" +
     feature.properties.observateurs;
 
   layer.bindPopup(
